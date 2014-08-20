@@ -9,5 +9,6 @@ def main(global_config, **settings):
     config.add_route('wikipage_edit', '/{uid}/edit')
     config.add_route('wikipage_delete', '/{uid}/delete')
     config.add_static_view(name='static', path='tutorial:static')
+    config.add_route('favicon', '/favicon.ico')
     config.scan()
     return config.make_wsgi_app()
