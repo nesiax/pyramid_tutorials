@@ -2,6 +2,15 @@ from pyramid.httpexceptions import HTTPFound
 from pyramid.renderers import get_renderer
 from pyramid.view import view_config
 
+import os
+from pyramid.response import FileResponse
+
+@view_config(route_name='favicon')
+def favicon_view(request):
+    here = os.path.dirname(__file__)
+    icon = os.path.join(here, "static", "favicon.ico")
+    return FileResponse(icon, request=request)
+
 pages = [
     dict(uid='100', title='Page 100', body='<em>100</em>'),
     dict(uid='101', title='Page 101', body='<em>101</em>'),
